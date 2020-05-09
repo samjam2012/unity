@@ -1,11 +1,12 @@
 import os
 from pymongo import MongoClient
-from events.utils import humanbytes
+from app.utils import humanbytes
 
 COLLECTION_NAME = 'unity'
 
 class EventRepository(object):
   def __init__(self):
+    print(os.environ)
     uri = os.environ.get('MONGO_URI')
     self.db = MongoClient(uri).unity
 

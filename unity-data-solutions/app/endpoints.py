@@ -2,8 +2,8 @@ from werkzeug.exceptions import HTTPException
 from flask import Flask, json, request
 from flask_cors import CORS
 
-from events.middleware import InvalidSchema
-from events.api.events import EventService
+from app.middleware import InvalidSchema
+from app.api.events import EventService
 
 app = Flask(__name__)
 CORS(app)
@@ -55,4 +55,4 @@ def res(payload, status=200):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True, port=4433)

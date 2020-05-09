@@ -7,12 +7,12 @@ services:
   api-events:
     build: ./unity-data-solutions
     expose:
-      - "${FLASK_API_PORT}"
+      - "${FLASK_RUN_PORT}"
     environment:
       MONGO_URI: ${MONGO_URI}
-      FLASK_API_PORT: "${FLASK_API_PORT}"
+      FLASK_RUN_PORT: "${FLASK_RUN_PORT}"
     ports:
-      - "${FLASK_API_PORT}:${FLASK_API_PORT}"
+      - "${FLASK_RUN_PORT}:${FLASK_RUN_PORT}"
     volumes:
       - ./unity-data-solutions/app:/unity/unity-data-solutions/app
   # ##############################
