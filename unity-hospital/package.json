@@ -99,6 +99,7 @@
     "yaml-loader": "^0.5.0",
     "yargs": "^6.0.0"
   },
+  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "react-app-rewired build && react-app-rewired start",
     "dev": "react-app-rewired start",

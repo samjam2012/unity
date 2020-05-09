@@ -1,9 +1,9 @@
 from marshmallow.exceptions import ValidationError
 
-from unity.middleware import InvalidSchema
-from unity.data import Repository
-from unity.data.events import EventRepository
-from unity.data.schema import EventSchema
+from events.middleware import InvalidSchema
+from events.data import Repository
+from events.data.events import EventRepository
+from events.data.schema import EventSchema
 
 
 class EventService(object):

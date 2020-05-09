@@ -1,54 +1,49 @@
 version: "3"
 
 services:
-
-##############################
-#  flask api with MongoDB
-##############################
-	api-events:
-		build: ./unity-data-solutions
-		expose:
-			- ${MONGO_PORT}
-		environment:
-			MONGO_URI: ${MONGO_URI}
-			MONGO_PORT: ${MONGO_PORT}
-		ports:
-			- ${MONGO_PORT}:${MONGO_PORT}
-		volumes: 
-			- ./unity-data-solutions/app:/unity/unity-data-solutions/app	
-
-##############################
-#  express/node api with postgres
-##############################
-	api-users:
-		build: ./unity-api
-		expose:
-			- ${API_USERS_PORT}
-		environment:
-			PG_HOST: ${PG_HOST}
-			API_USERS_PORT: ${API_USERS_PORT}
-		ports:
-			- ${API_USERS_PORT}:${API_USERS_PORT}
-		volumes: 
-			- ./unity-api/src:/unity/unity-api/src
-		command: yarn start	
-
-##############################
-#  express/node React app
-##############################
-	web-unity:
-		build: ./unity-hospital
-		expose:
-			- ${WEB_UNITY_PORT}
-		environment:
-			WEB_UNITY_PORT: ${WEB_UNITY_PORT}
-		ports:
-			- ${WEB_UNITY_PORT}:${WEB_UNITY_PORT}
-		volumes: 
-			- ./unity-hospital/src:/unity/unity-hospital/src	
-		links:
-			- api-users
-			- api-events
-		command: yarn start
-
-			
+  ##############################
+  #  flask api with MongoDB
+  ##############################
+  api-events:
+    build: ./unity-data-solutions
+    expose:
+      - "${FLASK_API_PORT}"
+    environment:
+      MONGO_URI: ${MONGO_URI}
+      FLASK_API_PORT: "${FLASK_API_PORT}"
+    ports:
+      - "${FLASK_API_PORT}:${FLASK_API_PORT}"
+    volumes:
+      - ./unity-data-solutions/app:/unity/unity-data-solutions/app
+  # ##############################
+  # #  express/node api with postgres
+  # ##############################
+  # api-users:
+  #   build: ./unity-api
+  #   expose:
+  #     - "${API_USERS_PORT}"
+  #   environment:
+  #     PG_HOST: ${PG_HOST}
+  #     API_USERS_PORT: "${API_USERS_PORT}"
+  #   ports:
+  #     - "${API_USERS_PORT}:${API_USERS_PORT}"
+  #   volumes:
+  #     - ./unity-api/src:/unity/unity-api/src
+  #   command: yarn start
+  # ##############################
+  # #  express/node React app
+  # ##############################
+  # web-unity:
+  #   build: ./unity-hospital
+  #   expose:
+  #     - ${WEB_UNITY_PORT}
+  #   environment:
+  #     WEB_UNITY_PORT: "${WEB_UNITY_PORT}"
+  #   ports:
+  #     - "${WEB_UNITY_PORT}:${WEB_UNITY_PORT}"
+  #   volumes:
+  #     - ./unity-hospital/src:/unity/unity-hospital/src
+  #   links:
+  #     - api-users
+  #     - api-events
+  #   command: yarn start

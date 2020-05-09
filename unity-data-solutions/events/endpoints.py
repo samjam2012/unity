@@ -2,8 +2,8 @@ from werkzeug.exceptions import HTTPException
 from flask import Flask, json, request
 from flask_cors import CORS
 
-from unity.middleware import InvalidSchema
-from unity.api.events import EventService
+from events.middleware import InvalidSchema
+from events.api.events import EventService
 
 app = Flask(__name__)
 CORS(app)

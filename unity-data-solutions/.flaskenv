@@ -1,2 +1,0 @@
-FLASK_APP=unity/endpoints.py
-FLASK_ENV=development
