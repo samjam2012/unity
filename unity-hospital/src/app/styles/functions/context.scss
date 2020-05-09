@@ -1,0 +1,6 @@
+@function pullHospitalBackground($value) {
+  @return map-get($hospital, $value);
+}
+@function pullToolsBackground($value) {
+  @return map-get($tools, $value);
+}

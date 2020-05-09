@@ -1,0 +1,21 @@
+.tools {
+  background-color: pullToolsBackground("primary");
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+
+  font-size: 0.75rem;
+}
+
+.contentContainer {
+  @include container;
+
+  p {
+    display: block;
+    margin: 0;
+  }
+
+  height: 40rem;
+}

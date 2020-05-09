@@ -1,0 +1,5 @@
+@import "../classes.scss";
+
+@function absoluteCenterMargin($width) {
+  @return (100% - $width) / 2;
+}

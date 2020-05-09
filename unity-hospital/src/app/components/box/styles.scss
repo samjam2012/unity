@@ -1,0 +1,21 @@
+.box {
+  display: inline-flex;
+  margin: 1rem;
+  padding: 3rem;
+  border-radius: 1rem;
+  background: white;
+
+  @include shadow;
+
+  @media screen {
+    padding: 3rem 5%;
+  }
+  flex-grow: 1;
+
+  //Below fixes issue of Router wrapping a component and not passing width style down?? pretty sure
+  > div {
+    max-width: 1366px;
+    width: 100%;
+  }
+  position: relative;
+}

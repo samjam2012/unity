@@ -1,0 +1,3 @@
+@function pullShadow($value) {
+  @return map-get($shadow, $value);
+}

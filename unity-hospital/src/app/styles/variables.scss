@@ -1,0 +1,47 @@
+$header-size: (
+  _default: 2rem
+);
+
+$baby-blue-light: rgb(211, 245, 255);
+$baby-blue: rgb(152, 233, 255);
+$blue-navy: rgb(18, 100, 123);
+$light-blue: rgba(114, 224, 255, 0.673);
+$gray-light: rgb(106, 106, 106);
+$gray: rgb(72, 72, 72);
+$gray-dark: rgb(44, 44, 44);
+$light-teal: rgba(85, 193, 173, 0.584);
+$teal-medium: rgba(109, 162, 152, 0.584);
+$pink: rgb(255, 231, 251);
+$purple-dark: rgb(57, 39, 99);
+$salmon: rgba(255, 160, 138, 0.721);
+$blue-medium: rgb(37, 92, 152);
+$pink-soft: rgb(255, 231, 251);
+$purple-medium: rgb(78, 47, 170);
+
+$color: (
+  text: $gray-dark !important
+);
+
+$tools: (
+  primary: $salmon,
+  secondary: $light-blue
+);
+
+$hospital: (
+  primary: $light-teal,
+  secondary: $blue-navy
+);
+
+$pascal: (
+  _baby-blue: rgba(195, 242, 255, 0.83)
+);
+
+$shadow: (
+  strong: 0.03rem 0.03rem 0.1rem $gray,
+  soft: 0.01rem 0.01rem 0.1rem $gray-light
+);
+
+$baseline-width: 415px;
+$box-shadow: (
+  _light: 0px 0px 5px -1px
+);
