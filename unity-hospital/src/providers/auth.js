@@ -42,36 +42,25 @@ const Auth0Provider = ({
         const auth0User = normalizeUser(rawAuth0User);
         const { authId, userType, loginCount } = auth0User;
 
-        // Insert into DB if not already there
-        // try {
-        //   await getUser(authId);
-        // } catch (error) {
-        // await createUser(auth0User)
         if (userType === "ADMIN") {
           try {
             await healthCheck();
+
+            const user = await getUser(authId);
+            if (user) {
+              await fireEvent({
+                eventType: "LOGIN",
+                eventDetails: { ...user, userType, loginCount }
+              });
+            } else {
+              // Insert into DB if not already there
+              // await createUser(auth0User);
+            }
           } catch (error) {
-            console.log("\n\nError");
-            console.log("\n------------\n\n");
+            console.log("\n------Error------\n\n");
             console.dir(error);
-            console.log("\n\n------------\n\n");
           }
         }
-
-        const user = await getUser(authId);
-        // await fireEvent({
-        //   eventType: "LOGIN",
-        //   eventDetails: { ...user, userType, loginCount }
-        // });
-
-        // }
-
-        // console.log("\n\nUser");
-        // console.log("\n------------\n\n");
-        // console.log(user);
-        // if (!user) {
-
-        // }
 
         setUser(auth0User);
       }
