@@ -35,8 +35,6 @@ services:
     environment:
       PG_HOST: ${PG_HOST}
       API_USERS_PORT: "${API_USERS_PORT}"
-    ports:
-      - "${API_USERS_PORT}:${API_USERS_PORT}"
     volumes:
       - ./unity-api/src:/unity/unity-api/src
 
@@ -46,10 +44,6 @@ services:
   web-unity:
     image: unity-hospital
     build: ./unity-hospital
-    environment:
-      WEB_UNITY_PORT: "${WEB_UNITY_PORT}"
-    ports:
-      - "${WEB_UNITY_PORT}:${WEB_UNITY_PORT}"
     volumes:
       - ./unity-hospital/src:/unity/unity-hospital/src
     depends_on:

@@ -8,10 +8,10 @@ LABEL version="0.0.1"
 RUN mkdir -p /unity/unity-hospital
 WORKDIR /unity/unity-hospital
 
-COPY . ./
+COPY . .
 
 # build production server to hold static files
 FROM nginx:alpine
-COPY --from=unity-build /unity/unity-hospital/build /usr/share/nginx/html
+COPY /build /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
