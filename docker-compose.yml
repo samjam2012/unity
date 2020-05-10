@@ -1,52 +1,45 @@
 version: "3"
 
 services:
-  ##############################
   #  flask api with MongoDB
-  ##############################
   api-events:
     image: api-events
     build:
+      dockerfile: Dockerfile.dev
       context: ./unity-data-solutions
-      dockerfile: Dockerfile
-    environment:
-      FLASK_APP: "${FLASK_APP}"
-      MONGO_URI: ${MONGO_URI}
+    env_file:
+      - .env
     volumes:
-      - "./:/unity"
+      - ./unity-data-solutions:/app
+
+  #  express/node api with postgres
+  api-users:
+    image: api-users
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./unity-api
+    env_file:
+      - .env
+    volumes:
+      - ./unity-api:/app
+
+  #  express/node React app
+  unity-hospital:
+    image: unity-hospital
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./unity-hospital
+    volumes:
+      - ./unity-hospital:/app
 
   ##############################
   #  nginx server for routing
   ##############################
-  nginx-server:
-    image: nginx-server
+  nginx:
+    image: nginx
+    restart: always
     build:
-      context: ./server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
+      context: ./nginx
     ports:
-      - "5000:80"
-
-  ##############################
-  #  express/node api with postgres
-  ##############################
-  api-users:
-    image: api-users
-    build: ./unity-api
-    environment:
-      PG_HOST: ${PG_HOST}
-      API_USERS_PORT: "${API_USERS_PORT}"
-    volumes:
-      - ./unity-api/src:/unity/unity-api/src
-
-  ##############################
-  #  express/node React app
-  ##############################
-  web-unity:
-    image: unity-hospital
-    build: ./unity-hospital
-    volumes:
-      - ./unity-hospital/src:/unity/unity-hospital/src
-    depends_on:
-      - api-users
-      - api-events
-      - nginx-server
+      - "8080:80"
