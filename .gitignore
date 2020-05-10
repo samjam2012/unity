@@ -28,3 +28,8 @@ yarn-error.log*
 connect*
 run*
 *sql
+
+nginx*
+.travis
+
+__*
