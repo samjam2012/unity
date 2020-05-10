@@ -23,7 +23,11 @@ yarn-error.log*
 .vscode
 
 # scripts
+unity*
 connect*
 run*
 *sql
 __*
+
+# deployment
+*.aws*
