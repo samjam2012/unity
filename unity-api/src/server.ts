@@ -24,7 +24,7 @@ app.use(
 // app.use(middleware);
 
 app.get("/", (req: any, res: any) => {
-  res.json({ info: "hi" });
+  res.json("User service is up");
 });
 
 app.post("/users", createUser);

@@ -1,19 +1,15 @@
-FROM node:12.0.0-alpine
+FROM node:12.0.0
 
 LABEL Author="Sam Jamal"
 LABEL Description="image for unity-api Node.js/postgres app"
 LABEL version="0.0.1"
 
-# creating 'unity' holding container for apps
-ENV UNITY_API /unity/unity-api
-RUN mkdir -p $UNITY_API
-WORKDIR $UNITY_API
 
-COPY package.json $UNITY_API
-COPY yarn.lock $UNITY_API
+RUN mkdir -p /unity/unity-api
+WORKDIR /unity/unity-api
 
-RUN yarn
+COPY . ./
 
-COPY . $UNITY_API
+EXPOSE 8090
 
 CMD ["yarn", "start"]

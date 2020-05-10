@@ -10,12 +10,13 @@ ENV UNITY_DATA /unity/unity-data-solutions
 RUN mkdir -p $UNITY_DATA
 WORKDIR $UNITY_DATA
 
-EXPOSE 4433
 
 COPY requirements.txt $UNITY_DATA
 
 RUN pip install -r requirements.txt
 
-COPY . $UNITY_DATA
+COPY . ./
+
+EXPOSE 4433
 
 CMD [ "uwsgi", "--ini", "app.ini" ]

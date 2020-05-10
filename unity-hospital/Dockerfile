@@ -1,22 +1,17 @@
-FROM node:12.0.0-alpine
+FROM node:12.0.0 as unity-build
 
 LABEL Author="Sam Jamal"
 LABEL Description="image for unity-hospital React app"
 LABEL version="0.0.1"
 
 # creating 'unity' holding container for apps
-ENV UNITY_HOSPITAL /unity/unity-hospital
-RUN mkdir -p $UNITY_HOSPITAL
-WORKDIR $UNITY_HOSPITAL
+RUN mkdir -p /unity/unity-hospital
+WORKDIR /unity/unity-hospital
 
-COPY package.json $UNITY_HOSPITAL
-COPY yarn.lock $UNITY_HOSPITAL
+COPY . ./
 
-RUN yarn && \
-  yarn build && \
-  yarn global add serve && \
-  serve
-
-COPY . $UNITY_HOSPITAL
-
-CMD ["yarn", "start"]
+# build production server to hold static files
+FROM nginx:alpine
+COPY --from=unity-build /unity/unity-hospital/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

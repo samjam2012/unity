@@ -3,10 +3,9 @@ version: "3"
 services:
   ##############################
   #  flask api with MongoDB
-  #  nginx for production server deploy
   ##############################
   api-events:
-    image: unity-data-solutions
+    image: api-events
     build:
       context: ./unity-data-solutions
       dockerfile: Dockerfile
@@ -15,22 +14,24 @@ services:
       MONGO_URI: ${MONGO_URI}
     volumes:
       - "./:/unity"
-  nginx:
+
+  ##############################
+  #  nginx server for routing
+  ##############################
+  nginx-server:
     image: nginx-server
     build:
-      context: ./unity-data-solutions
-      dockerfile: Dockerfile-nginx
-    depends_on:
-      - api-events
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
 
   ##############################
   #  express/node api with postgres
   ##############################
   api-users:
-    image: unity-api
+    image: api-users
     build: ./unity-api
-    expose:
-      - "${API_USERS_PORT}"
     environment:
       PG_HOST: ${PG_HOST}
       API_USERS_PORT: "${API_USERS_PORT}"
@@ -38,23 +39,20 @@ services:
       - "${API_USERS_PORT}:${API_USERS_PORT}"
     volumes:
       - ./unity-api/src:/unity/unity-api/src
-    command: yarn start
+
   ##############################
   #  express/node React app
   ##############################
   web-unity:
     image: unity-hospital
     build: ./unity-hospital
-    expose:
-      - ${WEB_UNITY_PORT}
     environment:
       WEB_UNITY_PORT: "${WEB_UNITY_PORT}"
     ports:
       - "${WEB_UNITY_PORT}:${WEB_UNITY_PORT}"
     volumes:
       - ./unity-hospital/src:/unity/unity-hospital/src
-    links:
+    depends_on:
       - api-users
       - api-events
-      - nginx
-    command: yarn start
+      - nginx-server

@@ -11,7 +11,7 @@ CORS(app)
 
 @app.route("/", methods=["GET"])
 def index():
-  return "Service is up"
+  return "Event service is up"
 
 @app.route("/ping", methods=["GET"])
 def ping():
