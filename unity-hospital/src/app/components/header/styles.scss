@@ -1,0 +1,32 @@
+$header_border_color: $blue-navy;
+$header_shadow: pullShadow("strong");
+$header_size: map-get($header-size, "_default");
+
+.header {
+  display: flex;
+  font-size: $header_size;
+  justify-content: space-between;
+  margin: 0rem;
+  text-align: center;
+  width: 100%;
+}
+
+.left {
+  @extend .header;
+
+  text-align: left;
+}
+
+.round {
+  @extend .header;
+  border-radius: 50%;
+}
+
+.inner {
+  padding: 0.75rem;
+  border-bottom: 0.5rem solid $header_border_color;
+
+  > div {
+    margin-bottom: 0;
+  }
+}

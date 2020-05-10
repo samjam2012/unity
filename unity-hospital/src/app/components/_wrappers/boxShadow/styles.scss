@@ -1,0 +1,45 @@
+.container {
+  display: block;
+  overflow: hidden;
+}
+
+.inner {
+  background: transparent;
+  padding: 2rem;
+
+  @media (max-width: 550px) {
+    padding: 1.5rem;
+  }
+}
+
+.left-right {
+  @extend .container;
+
+  padding: 0rem 1rem;
+
+  > div {
+    @extend .inner;
+
+    box-shadow: 10px 0 12px -10px map-get($color, "_gray"),
+      -10px 0 12px -10px map-get($color, "_gray");
+  }
+}
+
+.right {
+  @extend .container;
+
+  > div {
+    background: white;
+    box-shadow: -10 10px 15px -7px map-get($color, "_gray");
+  }
+}
+
+.bottom {
+  @extend .container;
+
+  padding: 0 0 2rem;
+
+  > div {
+    box-shadow: 0 10px 10px -7px map-get($color, "_gray");
+  }
+}

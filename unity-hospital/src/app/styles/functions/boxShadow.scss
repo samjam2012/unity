@@ -1,0 +1,22 @@
+@function addInset($boxShadow) {
+  @return inset $boxShadow;
+}
+
+@function shadow() {
+  @return 0 0 5px #333;
+}
+@function shadowTop() {
+  @return 0 -5px 5px -5px #333;
+}
+
+@function shadowRight() {
+  @return 5px 0 5px -5px #333;
+}
+
+@function shadowBottom() {
+  @return 0 5px 5px -5px #333;
+}
+
+@function shadowLeft() {
+  @return -5px 0 5px -5px #333;
+}

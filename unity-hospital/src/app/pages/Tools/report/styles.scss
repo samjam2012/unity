@@ -1,0 +1,60 @@
+.loader {
+  @include absoluteCentered(0);
+
+  margin-top: 5rem;
+}
+
+.header {
+  @include header-static-top-left;
+
+  background-color: rgb(237, 237, 237);
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 0.5rem 2rem;
+  box-shadow: 5px 5px 15px -10px #333;
+}
+
+.content {
+  width: 100%;
+  margin: 2rem 0;
+  display: flex;
+
+  .column {
+    flex: 1;
+
+    > div {
+      &:nth-child(odd) {
+        margin: 1rem 0rem;
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .largeColumn {
+    flex: 2;
+
+    display: flex;
+    flex-flow: column;
+    @extend .column;
+
+    .outerObj {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      padding-right: 2rem;
+    }
+    .innerObj {
+      display: inline-flex;
+      flex-flow: column;
+      > p {
+        margin-left: 0.5rem;
+
+        &:first-child {
+          margin: 0 0 0.5rem 0;
+          font-style: italic;
+        }
+      }
+    }
+  }
+}
