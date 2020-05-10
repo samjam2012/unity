@@ -1,5 +1,5 @@
 class Repository(object):
-  def __init__(self, adapter=None):
+  def __init__(self, adapter=None, connect=False):
     self.client = adapter()
 
   def find_all(self, selector):

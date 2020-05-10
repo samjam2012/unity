@@ -5,14 +5,15 @@ LABEL Description="image for unity-api Node.js/postgres app"
 LABEL version="0.0.1"
 
 # creating 'unity' holding container for apps
-RUN mkdir -p /unity/unity-api
-WORKDIR /unity/unity-api
+ENV UNITY_API /unity/unity-api
+RUN mkdir -p $UNITY_API
+WORKDIR $UNITY_API
 
-COPY package.json ./
-COPY yarn.lock ./
+COPY package.json $UNITY_API
+COPY yarn.lock $UNITY_API
 
 RUN yarn
 
-COPY . ./
+COPY . $UNITY_API
 
 CMD ["yarn", "start"]

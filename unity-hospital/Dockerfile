@@ -5,14 +5,18 @@ LABEL Description="image for unity-hospital React app"
 LABEL version="0.0.1"
 
 # creating 'unity' holding container for apps
-RUN mkdir -p /unity/unity-hospital
-WORKDIR /unity/unity-hospital
+ENV UNITY_HOSPITAL /unity/unity-hospital
+RUN mkdir -p $UNITY_HOSPITAL
+WORKDIR $UNITY_HOSPITAL
 
-COPY package.json ./
-COPY yarn.lock ./
+COPY package.json $UNITY_HOSPITAL
+COPY yarn.lock $UNITY_HOSPITAL
 
-RUN yarn
+RUN yarn && \
+  yarn build && \
+  yarn global add serve && \
+  serve
 
-COPY . ./
+COPY . $UNITY_HOSPITAL
 
 CMD ["yarn", "start"]

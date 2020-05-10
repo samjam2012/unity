@@ -6,7 +6,6 @@ COLLECTION_NAME = 'unity'
 
 class EventRepository(object):
   def __init__(self):
-    print(os.environ)
     uri = os.environ.get('MONGO_URI')
     self.db = MongoClient(uri).unity
 

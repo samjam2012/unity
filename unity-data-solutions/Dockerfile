@@ -5,14 +5,17 @@ LABEL Description="image for unity-data-solutions flask app"
 LABEL version="0.0.1"
 
 # creating 'unity' holding container for apps
-RUN mkdir -p /unity/unity-data-solutions
-WORKDIR /unity/unity-data-solutions
+ENV UNITY_DATA /unity/unity-data-solutions
 
-COPY requirements.txt ./
+RUN mkdir -p $UNITY_DATA
+WORKDIR $UNITY_DATA
 
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
+EXPOSE 4433
 
-COPY . ./
+COPY requirements.txt $UNITY_DATA
 
-CMD python -m flask run
+RUN pip install -r requirements.txt
+
+COPY . $UNITY_DATA
+
+CMD [ "uwsgi", "--ini", "app.ini" ]
