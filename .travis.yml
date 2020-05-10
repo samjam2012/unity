@@ -6,13 +6,14 @@ services:
 # script:
 #   — docker run -e CI=true YOUR_DOCKERHUB_USERNAME/react-test npm run test — — coverage
 after_success:
-  — docker build -t YOUR_DOCKERHUB_USERNAME/multi-nginx ./nginx
-  — docker build -t YOUR_DOCKERHUB_USERNAME/multi-server ./server
-  — docker build -t YOUR_DOCKERHUB_USERNAME/multi-client ./client
+  — docker build -t sjamal2012/nginx ./nginx
+  — docker build -t sjamal2012/unity-hospital ./unity-hospital
+  — docker build -t sjamal2012/api-users ./unity-api
+  — docker build -t sjamal2012/api-events ./unity-data-solutions
  # Login to the docker CLI
-  — echo “$DOCKER_PASSWORD” | docker login -u “$DOCKER_ID” — password-stdin
+  — echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" — password-stdin
 # Take these images and push them to Docker Hub
-  — docker push YOUR_DOCKERHUB_USERNAME/nginx
-  — docker push YOUR_DOCKERHUB_USERNAME/unity-hospital
-  — docker push YOUR_DOCKERHUB_USERNAME/unity-api
-  — docker push YOUR_DOCKERHUB_USERNAME/unity-data-solutions
+  — docker push sjamal2012/nginx
+  — docker push sjamal2012/unity-hospital
+  — docker push sjamal2012/api-users
+  — docker push sjamal2012/api-events

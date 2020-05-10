@@ -4,12 +4,11 @@ LABEL Author="Sam Jamal"
 LABEL Description="image for unity-api Node.js/postgres app"
 LABEL version="0.0.1"
 
+WORKDIR /app
 
-RUN mkdir -p /unity/unity-api
-WORKDIR /unity/unity-api
+COPY ./package.json ./yarn.lock ./
+RUN yarn
 
-COPY . ./
-
-EXPOSE 8090
+COPY . .
 
 CMD ["yarn", "start"]

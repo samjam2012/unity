@@ -4,7 +4,7 @@ LABEL Author="Sam Jamal"
 LABEL Description="image for unity-hospital React app"
 LABEL version="0.0.1"
 
-WORKDIR "/app"
+WORKDIR /app
 
 COPY ./package.json ./yarn.lock ./
 RUN yarn

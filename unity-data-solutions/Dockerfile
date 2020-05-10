@@ -4,19 +4,14 @@ LABEL Author="Sam Jamal"
 LABEL Description="image for unity-data-solutions flask app"
 LABEL version="0.0.1"
 
-# creating 'unity' holding container for apps
-ENV UNITY_DATA /unity/unity-data-solutions
+WORKDIR /app
 
-RUN mkdir -p $UNITY_DATA
-WORKDIR $UNITY_DATA
+COPY requirements.txt ./
+RUN pip3 install -r requirements.txt
 
-
-COPY requirements.txt $UNITY_DATA
-
-RUN pip install -r requirements.txt
-
-COPY . ./
+COPY . .
 
 EXPOSE 4433
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
 CMD [ "uwsgi", "--ini", "app.ini" ]
