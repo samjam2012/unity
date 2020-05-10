@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from "axios";
-
+import { config } from "../configs/constants";
 export * from "./users";
 export * from "./analytics";
-const EVENT_URL = "http://localhost:4433";
-const USER_URL = "http://localhost:8090";
+const EVENT_URL = config.url.EVENT_API_URL;
+const USER_URL = config.url.USER_API_URL;
 
 const createApi = (baseUrl: string) => async (
   path: string,

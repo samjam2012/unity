@@ -1,16 +1,14 @@
 version: "3"
 
 services:
-  #  flask api with MongoDB
-  api-events:
-    image: api-events
+  #  express/node React app
+  unity-hospital:
+    image: unity-hospital
     build:
       dockerfile: Dockerfile.dev
-      context: ./unity-data-solutions
-    env_file:
-      - .env
+      context: ./unity-hospital
     volumes:
-      - ./unity-data-solutions:/app
+      - ./unity-hospital:/app
 
   #  express/node api with postgres
   api-users:
@@ -23,14 +21,16 @@ services:
     volumes:
       - ./unity-api:/app
 
-  #  express/node React app
-  unity-hospital:
-    image: unity-hospital
+  #  flask api with MongoDB
+  api-events:
+    image: api-events
     build:
       dockerfile: Dockerfile.dev
-      context: ./unity-hospital
+      context: ./unity-data-solutions
+    env_file:
+      - .env
     volumes:
-      - ./unity-hospital:/app
+      - ./unity-data-solutions:/app
 
   ##############################
   #  nginx server for routing
