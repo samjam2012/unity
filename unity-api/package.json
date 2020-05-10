@@ -10,7 +10,7 @@
     "pg": "^7.18.2"
   },
   "scripts": {
-    "start": "rm -rf dist && tsc && node dist/server.js",
+    "start": "node dist/server.js",
     "start:dev": "nodemon -d 1  \"npm run start\"",
     "build": "rm -rf dist && tsc",
     "dev": "tsc && concurrently -k -r \"tsc -w\" \"npm run 'start:dev'\""
