@@ -44,9 +44,9 @@ const Auth0Provider = ({
 
         if (userType === "ADMIN") {
           try {
-            await healthCheck();
-
             const user = await getUser(authId);
+
+            await healthCheck();
             if (user) {
               await fireEvent({
                 eventType: "LOGIN",

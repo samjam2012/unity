@@ -45,6 +45,7 @@
     "fs": "^0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-template": "^4.0.0",
+    "http-proxy-middleware": "^1.0.3",
     "is-wsl": "^1.1.0",
     "jest": "24.9.0",
     "jest-environment-jsdom-fourteen": "0.1.0",
@@ -98,18 +99,6 @@
     "uikit": "^3.3.0",
     "yaml-loader": "^0.5.0",
     "yargs": "^6.0.0"
-  },
-  "proxy": {
-    "/api-users/.*(_get)": {
-      "target": "http://localhost:8090/"
-    },
-    "/api-events/.*(_get)": {
-      "target": "http://localhost:4433/"
-    },
-    "/.*": {
-      "target": "http://localhost:3000/",
-      "changeOrigin": true
-    }
   },
   "scripts": {
     "start": "react-app-rewired build && react-app-rewired start",
