@@ -9,6 +9,8 @@ services:
       context: ./unity-hospital
     volumes:
       - ./unity-hospital:/app
+      - /app/node_modules
+    stdin_open: true
 
   #  express/node api with postgres
   api-users:
@@ -20,6 +22,7 @@ services:
       - .env
     volumes:
       - ./unity-api:/app
+      - /app/node_modules
 
   #  flask api with MongoDB
   api-events:
