@@ -25,6 +25,7 @@ constants.js
 __pycache__*
 .travis*
 .DS_Store
-.env*
+.env
+env/
 Pip*
 *extensions

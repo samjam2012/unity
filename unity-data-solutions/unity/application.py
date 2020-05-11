@@ -2,23 +2,23 @@ from werkzeug.exceptions import HTTPException
 from flask import Flask, json, request
 from flask_cors import CORS
 
-from ..utils.middleware import InvalidSchema
-from ..api.events import EventService
+from ..unity.utils.middleware import InvalidSchema
+from ..unity.api.events import EventService
 
-application = Flask(__name__)
-CORS(application)
+application = app = Flask(__name__)
+CORS(app)
 
 
-@application.route("/", methods=["GET"])
+@app.route("/", methods=["GET"])
 def index():
   return "Event service is up"
 
-@application.route("/ping", methods=["GET"])
+@app.route("/ping", methods=["GET"])
 def ping():
   stats = EventService().health_check()
   return res(stats)
 
-@application.route("/events", methods=['POST'])
+@app.route("/events", methods=['POST'])
 # @type_validator
 def insert():
   raw_event_json = json.loads(request.data)
@@ -27,7 +27,7 @@ def insert():
   
   return res(event)
 
-@application.route("/events/range", methods=['POST'])
+@app.route("/events/range", methods=['POST'])
 def get_type_in_range():
   raw_event_json = json.loads(request.data)
     
@@ -35,17 +35,17 @@ def get_type_in_range():
   
   return res(events)
 
-@application.route("/events/usage", methods=['GET'])
+@app.route("/events/usage", methods=['GET'])
 def get_usage():    
   usage_object = EventService().report_usage()
 
   return res(usage_object)
 
-@application.errorhandler(HTTPException)
+@app.errorhandler(HTTPException)
 def handle_exception(error):
   return error
 
-@application.errorhandler(InvalidSchema)
+@app.errorhandler(InvalidSchema)
 def handle_invalid_request(error):
   response = error.to_dict()
   return res(response, error.status)
@@ -55,4 +55,4 @@ def res(payload, status=200):
 
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    app.run(debug=True)
