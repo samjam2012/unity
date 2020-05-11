@@ -12,7 +12,6 @@ yarn-error.log*
 .vscode
 
 # scripts
-unity*
 connect*
 run*
 *sql
@@ -23,8 +22,9 @@ auth_client.json
 constants.js
 
 *.aws*
-__*
+__pycache__*
 .travis*
 .DS_Store
 .env*
 Pip*
+*extensions

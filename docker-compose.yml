@@ -8,8 +8,8 @@ services:
       dockerfile: Dockerfile.dev
       context: ./unity-hospital
     volumes:
-      - ./unity-hospital:/app
       - /app/node_modules
+      - ./unity-hospital:/app
     stdin_open: true
 
   #  express/node api with postgres
@@ -21,8 +21,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./unity-api:/app
       - /app/node_modules
+      - ./unity-api:/app
 
   #  flask api with MongoDB
   api-events:
