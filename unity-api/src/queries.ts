@@ -47,11 +47,6 @@ const createUser = (req: any, res: any) => {
         return res.status(500).send({ message: detail });
       }
 
-      console.log("\n\nResults");
-      console.log("\n------------\n\n");
-      console.dir(results);
-      console.log("\n\n------------\n\n");
-
       return res.status(201).send(results);
     }
   );
@@ -86,10 +81,6 @@ const getUserByAuthId = (req: any, res: any) => {
     (error: any, results: any) => {
       if (error) {
         res.status(500).send({ error, message: "Untracked error" });
-      } else if (!results) {
-        res.status(502).send({
-          message: "pg connection refused"
-        });
       }
 
       const rawUser = results.rows[0];

@@ -1,5 +1,7 @@
+from app import endpoints
+
 class Repository(object):
-  def __init__(self, adapter=None, connect=False):
+  def __init__(self, adapter=None):
     self.client = adapter()
 
   def find_all(self, selector):

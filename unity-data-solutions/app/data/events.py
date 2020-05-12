@@ -1,6 +1,6 @@
 import os
 from pymongo import MongoClient
-from ..utils.methods import humanbytes
+from app.utils.methods import humanbytes
 
 COLLECTION_NAME = 'unity'
 

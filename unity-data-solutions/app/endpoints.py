@@ -1,13 +1,8 @@
 from werkzeug.exceptions import HTTPException
-from flask import Flask, json, request
-from flask_cors import CORS
-
-from ..unity.utils.middleware import InvalidSchema
-from ..unity.api.events import EventService
-
-application = app = Flask(__name__)
-CORS(app)
-
+from flask import json, request
+from app import app
+from app.utils.middleware import InvalidSchema
+from app.api.events import EventService
 
 @app.route("/", methods=["GET"])
 def index():
@@ -52,7 +47,3 @@ def handle_invalid_request(error):
 
 def res(payload, status=200):
     return (json.dumps(payload), status, {'content-type': 'application/json'})
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=4433,debug=True)
