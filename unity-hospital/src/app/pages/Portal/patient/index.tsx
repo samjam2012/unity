@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles.scss";
-import { Header, Section, Button, Container } from "../../../components";
+import { Header, Section, Container } from "../../../components";
 import { mergeClasses } from "../../../utils";
 import { Page } from "../../../../interfaces/app/pages";
 

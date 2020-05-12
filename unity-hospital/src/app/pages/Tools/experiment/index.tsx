@@ -94,10 +94,6 @@ export default function Experiment(props: Page) {
     resetProc();
   };
   const wipeData = () => {
-    console.log("\n\nHiiiii");
-    console.log("\n------------\n\n");
-    console.log("\t" + "hi");
-    console.log("\n\n------------\n\n");
     setEvents([]);
     setUsage({});
   };
