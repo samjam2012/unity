@@ -54,7 +54,7 @@ const Auth0Provider = ({
               });
             } else {
               // Insert into DB if not already there
-              // await createUser(auth0User);
+              await createUser(auth0User);
             }
           } catch (error) {
             console.log("\n------Error------\n\n");
