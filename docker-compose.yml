@@ -14,8 +14,11 @@ services:
     volumes:
       - /app/node_modules
       - ./unity-hospital:/app
-		stdin_open: true
-		# current causes 'nginx: [emerg] host not found in upstream "unity-hospital:3000" in /etc/nginx/conf.d/default.conf:2'
+    stdin_open: true
+    depends_on:
+      - api-users
+      - api-events
+    # current causes 'nginx: [emerg] host not found in upstream "unity-hospital:3000" in /etc/nginx/conf.d/default.conf:2'
     # links:
     #   - "api-events:api-events"
     #   - "api-users:api-users"
