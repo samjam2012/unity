@@ -4,6 +4,10 @@ services:
   #  express/node React app
   unity-hospital:
     image: unity-hospital
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
     build:
       dockerfile: Dockerfile.dev
       context: ./unity-hospital
@@ -11,6 +15,9 @@ services:
       - /app/node_modules
       - ./unity-hospital:/app
     stdin_open: true
+    # links:
+    #   - "api-events:api-events"
+    #   - "api-users:api-users"
 
   #  express/node api with postgres
   api-users:
@@ -27,6 +34,10 @@ services:
   #  flask api with MongoDB
   api-events:
     image: api-events
+    expose:
+      - 4433
+    ports:
+      - 4433:4433
     build:
       dockerfile: Dockerfile.dev
       context: ./unity-data-solutions
