@@ -22,8 +22,7 @@ yarn-error.log*
 build
 dist
 .travis.yml
-docker-compose.yml
-production.yml
+docker-compose*
 
 # env
 .env
@@ -36,3 +35,5 @@ connect
 runMongoDB
 runPostgres
 runReCompose
+
+digital_ocean*
