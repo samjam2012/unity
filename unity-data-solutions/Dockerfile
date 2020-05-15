@@ -8,6 +8,4 @@ RUN pip3 install -r requirements.txt
 
 COPY . /app
 
-EXPOSE 4433
-
-CMD ["python", "-m", "flask", "run", "--port", "4433"]
+CMD ["web:", "gunicorn", "run:app"]

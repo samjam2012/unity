@@ -7,7 +7,10 @@ import styles from "./styles.scss";
 
 const Portal = (props: PageContainer) => {
   const Portal = () => (
-    <Container className={styles.hospital}>
+    <Container>
+      <div className={styles.header}>
+        <div>Hello Sam!</div>
+      </div>
       <Doctor />
     </Container>
   );

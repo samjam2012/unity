@@ -12,7 +12,7 @@ const Tools = ({ children: Page }: PageContainer) => {
   const PAGES = ["Home", "Experiment"];
 
   return (
-    <Container className={styles.tools}>
+    <Container>
       <Header alignment="left" platformType="flat">
         <div>Unity Data Solutions</div>
         <div className={styles.buttonContainer}>
