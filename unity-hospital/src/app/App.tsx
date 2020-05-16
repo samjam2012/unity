@@ -4,7 +4,7 @@ import { Router, navigate } from "@reach/router";
 import { useAuth } from "./hooks";
 import Auth from "../interfaces/auth";
 import Login from "./pages/Login";
-import Portal from "./pages/Portal";
+import Portal, { Doctor as Home } from "./pages/Portal";
 import Tools, { Report, Experiment } from "./pages/Tools";
 import HashLoader from "react-spinners/HashLoader";
 import styles from "./App.scss";
@@ -47,7 +47,7 @@ const App = () => {
         <Login path="login" />
 
         <Portal path="*">
-          <Experiment path="/" />
+          <Home path="/" />
         </Portal>
 
         <Tools path="tools">

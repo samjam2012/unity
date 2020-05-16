@@ -14,13 +14,13 @@ $adjustWidth: 1200px;
 .wrapper {
   width: 100%;
   .children {
-    padding: 1rem 0;
-    height: 80%;
+    padding: 2rem;
+    height: 70%;
     min-width: 40rem;
     overflow-y: hidden;
-    box-shadow: shadow();
     max-width: $width;
     margin: 0 auto;
+    box-shadow: addInset(shadow());
 
     background-color: $baby-teal;
   }

@@ -12,21 +12,11 @@ const Tools = ({ children: Page }: PageContainer) => {
   const PAGES = ["Home", "Experiment"];
 
   return (
-    <Container>
-      <Header alignment="left" platformType="flat">
-        <div>Unity Data Solutions</div>
-        <div className={styles.buttonContainer}>
-          <Button type="button" subType="tertiary" to="/" text="Portal" />
-          <Button type="submit" onClick={() => logout({})} text="Log Out" />
-        </div>
-      </Header>
-
-      <div className={styles.contentContainer}>
-        <SideNav baseUrl={"/tools"} pages={PAGES}>
-          {Page}
-        </SideNav>
-      </div>
-    </Container>
+    <div className={styles.contentContainer}>
+      <SideNav baseUrl={"/tools"} pages={PAGES}>
+        {Page}
+      </SideNav>
+    </div>
   );
 };
 
