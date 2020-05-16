@@ -1,5 +1,4 @@
 import React from "react";
-import { SideNavProps as Props } from "../../../interfaces/app/component";
 import styles from "./styles.scss";
 import { Link } from "@reach/router";
 import Box from "../box";

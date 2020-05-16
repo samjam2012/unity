@@ -47,25 +47,20 @@ const createUser = (req: any, res: any) => {
         return res.status(500).send({ message: detail });
       }
 
-      console.log("\n\nResults");
-      console.log("\n------------\n\n");
-      console.dir(results);
-      console.log("\n\n------------\n\n");
-
       return res.status(201).send(results);
     }
   );
 
-  // switch (userType) {
-  //   case "DOCTOR":
-  //     createDoctor();
-  //     break;
-  //   case "PATIENT":
-  //     createPatient();
-  //     break;
-  //   default:
-  //     break;
-  // }
+  switch (userType) {
+    case "DOCTOR":
+      createDoctor(req, res);
+      break;
+    case "PATIENT":
+      createPatient(req, res);
+      break;
+    default:
+      break;
+  }
 };
 
 const getUsers = (req: any, res: any) => {
@@ -77,6 +72,24 @@ const getUsers = (req: any, res: any) => {
   });
 };
 
+function createDoctor(req: any, res: any) {
+  pool.query("SELECT * FROM users", (error: any, results: any) => {
+    if (error) {
+      throw error;
+    }
+    res.status(200).json(results.rows);
+  });
+}
+
+function createPatient(req: any, res: any) {
+  pool.query("SELECT * FROM users", (error: any, results: any) => {
+    if (error) {
+      throw error;
+    }
+    res.status(200).json(results.rows);
+  });
+}
+
 const getUserByAuthId = (req: any, res: any) => {
   const { authId } = req.params;
 
@@ -86,10 +99,6 @@ const getUserByAuthId = (req: any, res: any) => {
     (error: any, results: any) => {
       if (error) {
         res.status(500).send({ error, message: "Untracked error" });
-      } else if (!results) {
-        res.status(502).send({
-          message: "pg connection refused"
-        });
       }
 
       const rawUser = results.rows[0];

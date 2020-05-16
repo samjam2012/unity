@@ -23,7 +23,7 @@ $header_size: map-get($header-size, "_default");
 }
 
 .inner {
-  padding: 0.75rem;
+  padding: 0.75rem 0 0.75rem 3.75rem;
   border-bottom: 0.5rem solid $header_border_color;
 
   > div {

@@ -1,5 +1,3 @@
-Pip*
-connect*
-run*
-.gitignore
+connect
+runMongoDB
 __pycache__/

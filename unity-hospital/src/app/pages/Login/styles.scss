@@ -1,10 +1,9 @@
 .login {
-  background-color: pullHospitalBackground("primary");
   position: relative;
   .innerContainer {
     display: flex;
     flex-flow: column;
-    margin: 2rem auto;
+    margin: 1rem auto;
     text-align: center;
   }
 }
@@ -12,4 +11,9 @@
 .buttonContainer {
   display: flex;
   justify-content: center;
+  button {
+    height: 3rem;
+    width: 15rem;
+    font-size: 1.2rem;
+  }
 }

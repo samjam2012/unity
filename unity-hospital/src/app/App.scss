@@ -1,3 +1,5 @@
+$width: 1366px;
+$adjustWidth: 1200px;
 .routerComponentFillParent {
   > div:first-child {
     height: 100%;
@@ -7,9 +9,36 @@
   }
 }
 .appSize {
-  width: 1366px;
-  margin: 0 auto;
-  box-shadow: shadowLeft(), shadowRight();
+  width: 100%;
+}
+.wrapper {
+  width: 100%;
+  .children {
+    padding: 2rem;
+    height: 70%;
+    min-width: 40rem;
+    overflow-y: hidden;
+    max-width: $width;
+    margin: 0 auto;
+    box-shadow: addInset(shadow());
+
+    background-color: $baby-teal;
+  }
+  .header {
+    max-width: $adjustWidth;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    height: 2.5rem;
+
+    margin: 0;
+    padding: 0;
+  }
 }
 .site {
   display: flex;
@@ -18,7 +47,7 @@
   margin: auto;
   box-sizing: border-box;
 
-  background: rgb(198, 248, 255);
+  background: $pale-blue;
 }
 .text {
   color: pullColor("text");
@@ -29,7 +58,7 @@
   }
 }
 .loader {
-  background-color: pullHospitalBackground("primary");
+  // background-color: pullHospitalBackground("primary");
 
   > div:first-child {
     @include absoluteCentered(0);

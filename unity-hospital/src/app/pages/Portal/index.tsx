@@ -6,12 +6,15 @@ import Patient from "./patient";
 import styles from "./styles.scss";
 
 const Portal = (props: PageContainer) => {
-  const Portal = () => (
-    <Container className={styles.hospital}>
-      <Doctor />
+  const Content = () => <Doctor />;
+  return (
+    <Container>
+      <div className={styles.header}>
+        <div>Hello Sam!</div>
+      </div>
+      <Content />
     </Container>
   );
-  return <Portal />;
 };
 
 export default Portal;
