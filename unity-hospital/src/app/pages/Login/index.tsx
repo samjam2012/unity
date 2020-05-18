@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles.scss";
-import { Header, Section, Button, Container, Box } from "../../components";
+import { Button, Container, Box } from "../../components";
 import { mergeClasses } from "../../utils";
 import { Page } from "../../../interfaces/app/pages";
 import { useAuth } from "../../hooks";

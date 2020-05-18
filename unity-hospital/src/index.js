@@ -5,11 +5,15 @@ import { setConfig } from "react-hot-loader";
 import App from "./app/App";
 import "./app/App.scss";
 import history from "./services/history";
-import { domain, clientId } from "./configs/auth_client.json";
 import { Auth0Provider } from "./providers/auth";
 setConfig({
   showReactDomPatchNotification: false
 });
+
+const {
+  REACT_APP_AUTH_DOMAIN: domain,
+  REACT_APP_AUTH_CLIENT: clientId
+} = process.env;
 
 const onRedirectCallback = appState => {
   history.push(

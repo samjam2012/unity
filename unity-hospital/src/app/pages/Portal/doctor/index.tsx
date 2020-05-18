@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./styles.scss";
-import { Header, SideNav, Button, Container } from "../../../components";
-import { useAuth } from "../../../hooks";
+import { SideNav, Container } from "../../../components";
 import { Page } from "../../../../interfaces/app/pages";
 
 export default function Doctor(props: Page) {

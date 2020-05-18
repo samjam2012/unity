@@ -20,14 +20,14 @@ yarn-error.log*
 
 # production
 build
+*auth_client.json
 dist
-.travis.yml
 docker-compose*
 
 # env
+env/
 .env
 .flaskenv
-env/
 
 
 # scripts
@@ -35,5 +35,3 @@ connect
 runMongoDB
 runPostgres
 runFreshCompose
-
-digital_ocean*
