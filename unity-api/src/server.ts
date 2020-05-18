@@ -35,5 +35,5 @@ app.delete("/users/:authId", deleteUser);
 
 const port = process.env.PORT || 8090;
 app.listen(port, () => {
-  console.log(`Running on port ${port}...`);
+  console.log(`Running api-users on port ${port}...`);
 });

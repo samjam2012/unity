@@ -34,7 +34,9 @@ const App = () => {
           {hasToolAccess && (
             <Button type="button" subType="tertiary" to="/tools" text="Tools" />
           )}
-          <Button type="submit" onClick={() => logout({})} text="Log Out" />
+          {isAuthenticated && (
+            <Button type="submit" onClick={() => logout({})} text="Log Out" />
+          )}
         </div>
       </Header>
       <div className={styles.children}>{children}</div>

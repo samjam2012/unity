@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Page } from "../../../../interfaces/app/pages";
-import { healthCheck } from "../../../../api";
+import { healthCheck } from "../../../../api/events";
 import HashLoader from "react-spinners/HashLoader";
 import styles from "./styles.scss";
 import { H, Container } from "../../../components";

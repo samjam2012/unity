@@ -1,3 +1,26 @@
-.header {
-  color: blue;
+.infoContainer {
+  display: flex;
+  flex-flow: column;
+
+  > div {
+    width: 45%;
+  }
+
+  .header {
+    font-size: 2rem !important;
+    margin-bottom: 1rem;
+  }
+  .select {
+    margin-top: 1rem;
+    border-radius: 1rem;
+  }
+
+  .myDoctor {
+    > div:first-child {
+      font-size: 1.4rem;
+    }
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 }

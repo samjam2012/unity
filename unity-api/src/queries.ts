@@ -50,17 +50,6 @@ const createUser = (req: any, res: any) => {
       return res.status(201).send(results);
     }
   );
-
-  switch (userType) {
-    case "DOCTOR":
-      createDoctor(req, res);
-      break;
-    case "PATIENT":
-      createPatient(req, res);
-      break;
-    default:
-      break;
-  }
 };
 
 const getUsers = (req: any, res: any) => {
@@ -68,27 +57,9 @@ const getUsers = (req: any, res: any) => {
     if (error) {
       throw error;
     }
-    res.status(200).json(results.rows);
+    return res.status(200).json(results.rows);
   });
 };
-
-function createDoctor(req: any, res: any) {
-  pool.query("SELECT * FROM users", (error: any, results: any) => {
-    if (error) {
-      throw error;
-    }
-    res.status(200).json(results.rows);
-  });
-}
-
-function createPatient(req: any, res: any) {
-  pool.query("SELECT * FROM users", (error: any, results: any) => {
-    if (error) {
-      throw error;
-    }
-    res.status(200).json(results.rows);
-  });
-}
 
 const getUserByAuthId = (req: any, res: any) => {
   const { authId } = req.params;
@@ -101,10 +72,13 @@ const getUserByAuthId = (req: any, res: any) => {
         res.status(500).send({ error, message: "Untracked error" });
       }
 
-      const rawUser = results.rows[0];
+      const [rawUser] = results.rows;
+
+      if (!rawUser) return res.status(404).send({ message: "User not found" });
+
       const user = toCamelCase(rawUser) as User;
 
-      res.status(200).send({ user });
+      return res.status(200).send({ user });
     }
   );
 };
@@ -120,7 +94,7 @@ const updateUser = (req: any, res: any) => {
       if (error) {
         throw error;
       }
-      res.status(200).send(`User modified with ID: ${id}`);
+      return res.status(200).send(`User modified with ID: ${id}`);
     }
   );
 };

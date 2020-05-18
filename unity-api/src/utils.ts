@@ -1,6 +1,6 @@
-import { _ } from "lodash";
+import * as _ from "lodash";
 
-export const toCamelCase = (data: any) => {
+export const toCamelCase = (data = {}) => {
   const normalizedObj: any = {};
 
   for (const [key, value] of Object.entries(data)) {

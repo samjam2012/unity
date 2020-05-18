@@ -17,12 +17,11 @@ $adjustWidth: 1200px;
     padding: 2rem;
     height: 70%;
     min-width: 40rem;
-    overflow-y: hidden;
     max-width: $width;
     margin: 0 auto;
     box-shadow: addInset(shadow());
 
-    background-color: $baby-teal;
+    background: $baby-teal;
   }
   .header {
     max-width: $adjustWidth;
