@@ -14,7 +14,7 @@
     "@auth0/auth0-spa-js": "^1.6.4",
     "@material-ui/core": "^4.9.12",
     "@material-ui/icons": "^4.9.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "body-parser": "^1.15.1",
     "cors": "^2.8.5",
     "express": "^4.13.4",
